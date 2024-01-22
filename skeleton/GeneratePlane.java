@@ -1,18 +1,20 @@
 package skeleton;
 
-import plane_classes.GeneratePlaneSuper;
-import plane_classes.PlaneSuper;
+import plane_classes.GeneratePlaneInterface;
+import plane_classes.PlaneInterface;
 
 import java.util.Scanner;
 
-public class GeneratePlane extends GeneratePlaneSuper {
+public class GeneratePlane implements GeneratePlaneInterface {
+
+    private final Scanner scnr;
 
     public GeneratePlane(Scanner scanner) {
-        super(scanner);
+        scnr = scanner;
     }
 
     @Override
-    public PlaneSuper createPlane(int plane) {
+    public PlaneInterface createPlane(int plane) {
         return null;
     }
 }

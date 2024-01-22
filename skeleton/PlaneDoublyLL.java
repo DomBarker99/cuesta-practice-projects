@@ -2,19 +2,24 @@ package skeleton;
 
 import plane_classes.CustomComparator;
 import plane_classes.Passenger;
-import plane_classes.PlaneSuper;
+import plane_classes.PlaneInterface;
 
-public class PlaneDoublyLL extends PlaneSuper {
-
+public class PlaneDoublyLL implements PlaneInterface {
+    private final String planeName;
     private final int rows;
     private final int seatsInEachRow;
-    private PlaneDoublyLinkedList seatList;
+    private final PlaneDoublyLinkedList seatList;
 
     public PlaneDoublyLL(String name, int totalRows, int totalSeatsInEachRow) {
-        super(name);
+        planeName = name;
         rows = totalRows;
         seatsInEachRow = totalSeatsInEachRow;
         seatList = new PlaneDoublyLinkedList();
+    }
+
+    @Override
+    public String getPlaneName() {
+        return null;
     }
 
     @Override
@@ -47,8 +52,7 @@ public class PlaneDoublyLL extends PlaneSuper {
         return new int[0];
     }
 
-    @Override
-    protected Passenger locatePassenger(String name) {
+    private Passenger locatePassenger(String name) {
         return null;
     }
 

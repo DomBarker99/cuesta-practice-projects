@@ -1,14 +1,20 @@
 package skeleton;
 
 import plane_classes.Passenger;
-import plane_classes.PlaneSuper;
+import plane_classes.PlaneInterface;
 
-public class Plane2DArray extends PlaneSuper {
+public class Plane2DArray implements PlaneInterface {
+    private final String planeName;
     private final Passenger[][] seatList;
 
     public Plane2DArray(String name, int totalRows, int totalSeatsInEachRow) {
-        super(name);
+        planeName = name;
         seatList = new Passenger [totalRows] [totalSeatsInEachRow];
+    }
+
+    @Override
+    public String getPlaneName() {
+        return null;
     }
 
     @Override
@@ -41,8 +47,7 @@ public class Plane2DArray extends PlaneSuper {
         return new int[0];
     }
 
-    @Override
-    protected Passenger locatePassenger(String name) {
+    private Passenger locatePassenger(String name) {
         return null;
     }
 }

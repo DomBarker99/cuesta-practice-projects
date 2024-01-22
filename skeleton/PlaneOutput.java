@@ -1,37 +1,43 @@
 package skeleton;
 
-import plane_classes.PlaneSuper;
-import plane_classes.PlaneOutputSuper;
+import plane_classes.PlaneInterface;
+import plane_classes.PlaneOutputInterface;
 
 import java.util.Scanner;
 
-public class PlaneOutput extends PlaneOutputSuper {
+public class PlaneOutput implements PlaneOutputInterface {
 
-    public PlaneOutput(Scanner scanner, PlaneSuper thePlane){
-        super(scanner, thePlane);
+    private final Scanner scnr;
+
+    private final PlaneInterface plane;
+
+    public PlaneOutput(Scanner scanner, PlaneInterface thePlane){
+        scnr = scanner;
+        plane = thePlane;
     }
+
     @Override
     public void planeMenu() {
 
     }
 
     @Override
-    public void menuAddPassengerAt(PlaneSuper planeSuper) {
+    public void menuAddPassengerAt() {
 
     }
 
     @Override
-    public void menuAddPassengerNextAvailable(PlaneSuper planeSuper) {
+    public void menuAddPassengerNextAvailable() {
 
     }
 
     @Override
-    public void menuRemovePassenger(PlaneSuper planeSuper) {
+    public void menuRemovePassenger() {
 
     }
 
     @Override
-    public void menuSwapPassengers(PlaneSuper planeSuper) {
+    public void menuSwapPassengers() {
 
     }
 }

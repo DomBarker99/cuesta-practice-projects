@@ -77,11 +77,11 @@ public class DoublyLinkedList<AnyType> {
         if (x != null && !isEmpty()) {
             DoublyLinkedListIterator<AnyType> itr = first();
 
-            while (itr.current != tail && !itr.retrieve().equals(x))
+            while (itr.isValid() && !itr.retrieve().equals(x))
                 itr.advance();
 
             // x never found
-            return itr.current.equals(tail) ? null : itr;
+            return itr.isValid() ? itr : null;
         }
         return null;
     }
@@ -91,7 +91,7 @@ public class DoublyLinkedList<AnyType> {
      *
      * @param x The element to insert.
      */
-    public void insert(AnyType x) {
+    public void add(AnyType x) {
         if (x != null) {
             tail.prev.next = new DoublyListNode<>(x, tail.prev, tail);
             tail.prev = tail.prev.next;
@@ -105,11 +105,15 @@ public class DoublyLinkedList<AnyType> {
      * @param itr The iterator position before which the element is inserted.
      * @param x   The element to insert.
      */
-    public void insertBefore(DoublyLinkedListIterator<AnyType> itr, AnyType x) {
+    public void addBefore(DoublyLinkedListIterator<AnyType> itr, AnyType x) {
         if (x != null) {
-            itr.current.prev.next = new DoublyListNode<>(x, itr.current.prev, itr.current);
-            itr.current.prev = itr.current.prev.next;
-            ++size;
+            if (isEmpty())
+                add(x);
+            else {
+                itr.current.prev.next = new DoublyListNode<>(x, itr.current.prev, itr.current);
+                itr.current.prev = itr.current.prev.next;
+                ++size;
+            }
         }
     }
 
@@ -141,7 +145,7 @@ public class DoublyLinkedList<AnyType> {
      * @return true if the replacement is successful, false otherwise.
      */
     public boolean replace(AnyType before, AnyType after) {
-        if ((before != null || after != null) && !isEmpty()) {
+        if (before != null && after != null && !isEmpty()) {
             DoublyLinkedListIterator<AnyType> itr = find(before);
 
             // itr == null if 'before' is never found
@@ -177,7 +181,7 @@ public class DoublyLinkedList<AnyType> {
             output = new StringBuilder();
             DoublyLinkedListIterator<AnyType> itr = list.first();
 
-            while (itr.current != list.tail) {
+            while (itr.isValid()) {
                 output.append(itr.current.element).append(" ");
                 itr.advance();
             }
